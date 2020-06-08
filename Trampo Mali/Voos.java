@@ -68,6 +68,45 @@ public class Voos
         }
     }
 
+    public void remove(int codVoo) throws Exception
+    {
+        if(codVoo <= 0)
+            throw new Exception("codVoo invalido");
+
+            if(this.inicio == null)
+            throw new Exception("Lista vazia");
+
+        if(codVoo == this.inicio.getCodVoo())
+        {
+            if(this.inicio == this.ultimo)
+                this.ultimo = null;
+            else
+                this.inicio = this.inicio.getProx();
+
+            return;
+        }
+
+        No atual = this.inicio;
+
+        for(;;)
+        {
+            if(atual.getProx() == null)
+                throw new Exception("voo não existe");
+
+            if(codVoo == atual.getProx().getCodVoo())
+            {
+                if(this.ultimo == atual.getProx())
+                    this.ultimo = atual;
+
+                atual.setProx(atual.getProx().getProx());
+
+                return;
+            }
+
+            atual.getProx();
+        }
+    }
+
     public void remove(Voo x) throws Exception
     {
         if(x == null)
