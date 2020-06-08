@@ -25,19 +25,24 @@ public class Aeroportos  implements Cloneable{
 
 	private Node first, last;
 	
-
+	public Aeroportos()
+	{
+		this.first = null;
+		this.last = null;
+	}
+	
 	public void add(Aeroporto a) throws Exception{
 		if(a == null){
 			throw new Exception("Aeroporto nulo");
 		}
 
 		if (last == null){
-	            last   = new Node(a.clone(), null);
+	            last   = new Node((Aeroporto)a.clone(), null);
 	            first = last;
 	        }
 
         	else{
-			last.setNext(new Node(a.clone(), null));
+			last.setNext(new Node((Aeroporto)a.clone(), null));
         		last = last.getNext();
         	}
 	}
@@ -51,17 +56,17 @@ public class Aeroportos  implements Cloneable{
 			throw new Exception("Cidade nula");
 		}
 
-		Aeroporto aux = new Aeroporto(cod.clone(), new Voos(), cidade.clone());
+		Aeroporto aux = new Aeroporto(cod, new Voos(), cidade);
 
-		if (last == null){
-	            last = new Node(aux, null);
-	            first = last;
-	        }
+		if (first == null){
+			first = new Node(aux, null);
+			last = first;
+	    }
 
-        	else{
+        else{
 			last.setNext(new Node(aux, null));
-        		last = last.getNext();
-        	}
+			last = last.getNext();
+        }
 	}
 
 
@@ -116,19 +121,23 @@ public class Aeroportos  implements Cloneable{
 	}
 
 	public void addVoo(int codVoo, String codOrigem, String codDestino) throws Exception{
-		Node retorno;
+		Node retorno = null;
 		int achou = 0;
+		codOrigem = codOrigem.toUpperCase();
+		codDestino = codDestino.toUpperCase();
 
 		for(Node atual = first; atual != null; atual = atual.getNext()){
 			if(atual.getData().getCodAeroporto() == codOrigem){
 				retorno = atual;
 				achou++;
+				System.out.println(achou);
 			}
 			if(atual.getData().getCodAeroporto() == codDestino){
 				achou++;
+				System.out.println(achou);
 			}
 			if(achou >= 2){
-				retorno.getData().getListaDeVoos().add(codVoo, codDestino);
+				retorno.getData().getListaDeVoos().add(new Voo(codVoo, codDestino));
 				return;
 			}
 		}
@@ -163,7 +172,7 @@ public class Aeroportos  implements Cloneable{
         	Node atualA = a.first.getNext();
 
         	while(atualA != null){
-            		atualT.setNext (new Node(atualA.getData()));
+            		atualT.setNext (new Node(atualA.getData(), null));
             		atualT = atualT.getNext();
             		atualA = atualA.getNext();
         	}
@@ -174,8 +183,8 @@ public class Aeroportos  implements Cloneable{
 	public String toString(){
 		String retorno = "";
 		
-		Node atual = first;
-		for(;;){
+		for(Node atual = first; atual != null; atual.getNext())
+		{
 			if(atual.getNext() == null){
 				break;
 			}
@@ -223,8 +232,6 @@ public class Aeroportos  implements Cloneable{
 	}
 
 	public int hashCode(){
-		final int PRIMO = 13;
-
 		int retorno = 7;
 
 		for(Node atual = first; atual != null; atual = atual.getNext()){

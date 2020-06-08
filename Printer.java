@@ -17,14 +17,21 @@ public class Printer{
 		return ler.nextInt();
 	}
 
-	public static String cadastrarAeroporto(){
-		System.out.println("\n+Digite o codigo do aeroporto:");
+	public static String[] cadastrarAeroporto(){
+		String[] retorno = new String[2];
+		System.out.println("\nDigite o codigo do aeroporto:");
+		System.out.print(">>");
+		retorno[0] = ler.next();
+
+		System.out.println("\nDigite a cidade do aeroporto:");
 		System.out.print(">>");
 
-		return ler.nextString();
+		retorno[1] = ler.next();
+
+		return retorno;
 	}
 
-	public static int[] cadastrarVoo(){
+	public static Object[] cadastrarVoo(){
 		Object[] retorno = new Object[3];
 		
 		System.out.println("\nDigite o codigo do vôo:");
@@ -33,11 +40,11 @@ public class Printer{
 
 		System.out.println("\nDigite o codigo do aeroporto de origem:");
 		System.out.print(">>");
-		retorno[1] = ler.nextString();
+		retorno[1] = ler.next();
 
 		System.out.println("\nDigite o codigo do aeroporto de destino:");
 		System.out.print(">>");
-		retorno[2] = ler.nextString();
+		retorno[2] = ler.next();
 
 		return retorno;
 	}
@@ -53,11 +60,11 @@ public class Printer{
 		System.out.println("\nDigite o codigo do aeroporto a ser listado:");
 		System.out.print(">>");
 
-		return ler.nextString();
+		return ler.next();
 	}
 
 	public static void esperar(){
 		System.out.println("Aperte [ENTER] para terminar");
-		ler.nextInt();
+		ler.nextLine();
 	}
 }

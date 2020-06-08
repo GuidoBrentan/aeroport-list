@@ -1,4 +1,5 @@
-public class Aeroporto  implements Cloneable{
+public class Aeroporto  implements Cloneable
+{
     private String codAeroporto;
     private Voos listaDeVoos;
     private String cidade;

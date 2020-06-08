@@ -157,6 +157,7 @@ public class Voos implements Cloneable
                 ret += "(" + atual.getVoo() + ")";
             else
                 ret += ",(" + atual.getVoo() + ")";
+            
             atual = atual.getProx();
         }
 
