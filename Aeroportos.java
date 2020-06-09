@@ -137,7 +137,6 @@ public class Aeroportos  implements Cloneable{
 			}
 			if(achou >= 2){
 				retorno.getData().getListaDeVoos().add(new Voo(codVoo, codDestino));
-				System.out.println(retorno.getData().getListaDeVoos());
 				return;
 			}
 		}
@@ -183,11 +182,7 @@ public class Aeroportos  implements Cloneable{
 	public String toString(){
 		String retorno = "";
 
-		for(Node atual = first; atual != null; atual.getNext())
-		{
-			if(atual.getNext() == null){
-				break;
-			}
+		for(Node atual = first; atual != null; atual = atual.getNext()){
 			retorno += "\n"+atual.getData().toString();
 		}
 
