@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Printer{
 	private static Scanner ler = new Scanner(System.in);
-	
+
 	public static int mostrarOpcoes(){
 		System.out.println("__________________________________");
 		System.out.println("|               MENU:            |");
@@ -33,7 +33,7 @@ public class Printer{
 
 	public static Object[] cadastrarVoo(){
 		Object[] retorno = new Object[3];
-		
+
 		System.out.println("\nDigite o codigo do vôo:");
 		System.out.print(">>");
 		retorno[0] = ler.nextInt();

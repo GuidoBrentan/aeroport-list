@@ -18,14 +18,14 @@ class Program{
 						case 2: {
 							Object[] dados = Printer.cadastrarVoo();
 							aeroportos.addVoo((int)dados[0], (String)dados[1], (String)dados[2]);
-							break;	
+							break;
 						}
 						case 3: {
 							aeroportos.removeVoo(Printer.removerVoo());
 							break;
 						}
 						case 4: {
-							aeroportos.listVoo(Printer.listarVoo());
+							System.out.println(aeroportos.listVoo(Printer.listarVoo()));
 							break;
 						}
 						case 5: {

@@ -24,13 +24,13 @@ public class Aeroportos  implements Cloneable{
 	}
 
 	private Node first, last;
-	
+
 	public Aeroportos()
 	{
 		this.first = null;
 		this.last = null;
 	}
-	
+
 	public void add(Aeroporto a) throws Exception{
 		if(a == null){
 			throw new Exception("Aeroporto nulo");
@@ -101,22 +101,23 @@ public class Aeroportos  implements Cloneable{
 				}
 
 	                	atual.setNext(atual.getNext().getNext());
-                		
+
 				return;
 			}
-			
+
 			atual = atual.getNext();
 		}
 	}
 
 	//Que envolvem aeroporto
 	public String listVoo(String a) throws Exception{
+		a = a.toUpperCase();
 		for(Node atual = first; atual != null; atual = atual.getNext()){
-			if(atual.getData().getCodAeroporto() == a){
+			if(atual.getData().getCodAeroporto().equals(a)){
 				return atual.getData().toString();
 			}
 		}
-		
+
 		throw new Exception("Nao existe aeroporto com tal codigo");
 	}
 
@@ -127,17 +128,16 @@ public class Aeroportos  implements Cloneable{
 		codDestino = codDestino.toUpperCase();
 
 		for(Node atual = first; atual != null; atual = atual.getNext()){
-			if(atual.getData().getCodAeroporto() == codOrigem){
+			if(atual.getData().getCodAeroporto().equals(codOrigem)){
 				retorno = atual;
 				achou++;
-				System.out.println(achou);
 			}
-			if(atual.getData().getCodAeroporto() == codDestino){
+			if(atual.getData().getCodAeroporto().equals(codDestino)){
 				achou++;
-				System.out.println(achou);
 			}
 			if(achou >= 2){
 				retorno.getData().getListaDeVoos().add(new Voo(codVoo, codDestino));
+				System.out.println(retorno.getData().getListaDeVoos());
 				return;
 			}
 		}
@@ -179,10 +179,10 @@ public class Aeroportos  implements Cloneable{
 
 		last = atualT;
 	}
-	
+
 	public String toString(){
 		String retorno = "";
-		
+
 		for(Node atual = first; atual != null; atual.getNext())
 		{
 			if(atual.getNext() == null){
@@ -190,7 +190,7 @@ public class Aeroportos  implements Cloneable{
 			}
 			retorno += "\n"+atual.getData().toString();
 		}
-		
+
 		return retorno;
 	}
 
