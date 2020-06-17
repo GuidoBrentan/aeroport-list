@@ -73,7 +73,7 @@ public class Voos implements Cloneable
         if(codVoo <= 0)
             throw new Exception("codVoo invalido");
 
-            if(this.inicio == null)
+        if(this.inicio == null)
             throw new Exception("Lista vazia");
 
         if(codVoo == this.inicio.getCodVoo())
@@ -103,7 +103,7 @@ public class Voos implements Cloneable
                 return;
             }
 
-            atual.getProx();
+            atual = atual.getProx();
         }
     }
 

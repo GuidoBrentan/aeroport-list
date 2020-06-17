@@ -61,12 +61,12 @@ public class Aeroportos  implements Cloneable{
 		if (first == null){
 			first = new Node(aux, null);
 			last = first;
-	    }
+	        }
 
-        else{
-			last.setNext(new Node(aux, null));
-			last = last.getNext();
-        }
+	        else{
+				last.setNext(new Node(aux, null));
+				last = last.getNext();
+	        }
 	}
 
 
@@ -146,8 +146,10 @@ public class Aeroportos  implements Cloneable{
 
 	public void removeVoo(int cod) throws Exception{
 		for(Node atual = first; atual != null; atual = atual.getNext()){
+			System.out.println("Removendo...");
 			if(atual.getData().getListaDeVoos().existe(cod)){
 				atual.getData().getListaDeVoos().remove(cod);
+				System.out.println("Removido com susesso");
 				return;
 			}
 		}
