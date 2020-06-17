@@ -1,6 +1,31 @@
 class Program{
 	public static void main(String args[]){
 		Aeroportos aeroportos = new Aeroportos();
+
+		try{
+			aeroportos.add("BSB","Brasília");
+			aeroportos.add("CNF", "Belo Horizonte");
+			aeroportos.add("GIG", "Rio de Janeiro");
+			aeroportos.add("GRU", "São Paulo");
+			aeroportos.add("SSA", "Salvador");
+
+			aeroportos.addVoo(107, "BSB", "SSA");
+
+			aeroportos.addVoo(214, "CNF", "SSA");
+			aeroportos.addVoo(555, "CNF", "GIG");
+			aeroportos.addVoo(101, "CNF", "GRU");
+
+			aeroportos.addVoo(554, "GIG", "CNF");
+			aeroportos.addVoo(90, "GIG", "GRU");
+
+			aeroportos.addVoo(50, "GRU", "BSB");
+			aeroportos.addVoo(89, "GRU", "GIG");
+			aeroportos.addVoo(102, "GRU", "CNF");
+
+			aeroportos.addVoo(215, "SSA", "CNF");
+		}
+		catch(Exception e){}//não vai da erro
+
 		int opcao = 0;
 
 		while(true){
